@@ -1,5 +1,4 @@
-# tyson
-Use Typescript in JSON
+# tyson - Use Typescript in JSON
 
 ![tyson](tyson-twitter.png)
 
