@@ -30,6 +30,6 @@ compiles to
 {
   "title": "sample title",
   "position": 0,
-  "type": "sample type",
+  "type": "sample type"
 } 
 ```
