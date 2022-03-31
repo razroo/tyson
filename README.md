@@ -17,7 +17,7 @@ export interface TsonTest {
 ```
 import ( TsonTest } from 'test.interface';
 
-// test.tson
+// test.tson or test.tyson (.tyson for all you jokesters out there)
 {: TsonTest
   title: "sample title",
   position: 0,
