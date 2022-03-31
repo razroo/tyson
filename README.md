@@ -7,7 +7,7 @@ Typescript equivalent for JSON
 
 ```
 // test.interface.ts
-interface TsonTest {
+export interface TsonTest {
   title: string;
   position: number;
   type: string;
