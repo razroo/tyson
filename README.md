@@ -6,11 +6,17 @@ Typescript equivalent for JSON
 ## Here's what I have in mind
 
 ```
+// test.interface.ts
 interface TsonTest {
   title: string;
   position: number;
   type: string;
 }
+```
+
+```
+import ( TsonTest } from 'test.interface';
+
 // test.tson
 {: TsonTest
   title: "sample title",
