@@ -1,5 +1,5 @@
 # tyson
-Typescript equivalent for JSON
+Use Typescript in JSON
 
 ![tyson](tyson-twitter.png)
 
