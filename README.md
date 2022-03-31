@@ -3,7 +3,7 @@
 ![tyson](tyson-twitter.png)
 
 ## Benefits
-Re-use Typescript interfactes for JSON schemas.
+Re-use Typescript interfaces for JSON schemas.
 
 ## Here's what I have in mind
 
