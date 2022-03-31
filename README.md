@@ -2,6 +2,9 @@
 
 ![tyson](tyson-twitter.png)
 
+## Benefits
+Re-use Typescript interfactes for JSON schemas.
+
 ## Here's what I have in mind
 
 ```
