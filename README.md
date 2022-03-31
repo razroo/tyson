@@ -11,7 +11,7 @@ interface TsonTest {
   position: number;
   type: string;
 }
-// tson
+// test.tson
 {: TsonTest
   title: "sample title",
   position: 0,
@@ -21,7 +21,7 @@ interface TsonTest {
 
 compiles to 
 ```
-/// json 
+/// test.json 
 {
   "title": "sample title",
   "position": 0,
