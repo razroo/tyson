@@ -23,8 +23,8 @@ compiles to
 ```
 /// json 
 {
-  title: "sample title",
-  position: 0,
-  type: "sample type",
+  "title": "sample title",
+  "position": 0,
+  "type": "sample type",
 } 
 ```
