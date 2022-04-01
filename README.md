@@ -3,7 +3,10 @@
 ![tyson](tyson-twitter.png)
 
 ## Benefits
-Re-use Typescript interfaces for JSON schemas.
+1. Re-use Typescript interfaces for JSON schemas.
+2. Allows comments in JSON 
+3. no need for key value to be a string 
+4. Can use variables for JSON
 
 ## Here's what I have in mind
 
