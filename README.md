@@ -1,7 +1,5 @@
 # tyson - Use Typescript in JSON
 
-![tyson](tyson-twitter.png)
-
 ## Benefits
 1. Re-use Typescript interfaces for JSON schemas.
 2. Allows comments in JSON 
