@@ -7,6 +7,7 @@
 2. Allows comments in JSON 
 3. no need for key value to be a string 
 4. Can use variables for JSON
+5. Import all configs into a singular config
 
 ## Here's what I have in mind
 
