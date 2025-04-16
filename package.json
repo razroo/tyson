@@ -1,6 +1,6 @@
 {
   "name": "@razroo/tyson",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "TysonStarter",
   "main": "./lib/cjs/index.js",
   "types": "./lib/cjs/types/index.d.ts",
