@@ -1,0 +1,8 @@
+import { TsonTest } from './test.interface';
+
+// This is a comment that will be removed in the final JSON
+{: TsonTest
+  title: "Sample Title",
+  position: 1,
+  type: "example", // Inline comments work too
+} 
