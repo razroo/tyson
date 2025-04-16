@@ -22,6 +22,8 @@ for (let i = 0; i < args.length; i++) {
     options.interfaceFile = args[++i];
   } else if (arg === '--interface-name' || arg === '-n') {
     options.interfaceName = args[++i];
+  } else if (arg === '--tsconfig' || arg === '-t') {
+    options.tsConfigPath = args[++i];
   } else if (arg === '--debug' || arg === '-d') {
     process.env.DEBUG = 'true';
   } else if (arg === '--help' || arg === '-h') {
@@ -75,12 +77,14 @@ function printHelp() {
     -i, --input <file>         Input .tyson file
     -o, --output <file>        Output .json file
     -f, --interface <file>     TypeScript interface file
-    -n, --interface-name <name> Interface name to validate against
+    -n, --interface-name <n>   Interface name to validate against
+    -t, --tsconfig <file>      Custom tsconfig.json file path
     -d, --debug                Enable debug output
     -h, --help                 Print this help message
 
   Examples:
     tyson test.tyson test.json
     tyson -i test.tyson -o test.json -f test.interface.ts -n TsonTest
+    tyson -i test.tyson -o test.json -t ./tsconfig.custom.json
   `);
 } 

@@ -14,6 +14,7 @@ export interface TysonOptions {
   outputFile?: string;
   interfaceFile?: string;
   interfaceName?: string;
+  tsConfigPath?: string;  // Path to a custom tsconfig.json file
 }
 
 /**
@@ -126,10 +127,38 @@ export class TysonCompiler {
    * Initialize the TypeScript type checker with the given files
    */
   private initTypeChecker(files: string[]): void {
-    this.program = ts.createProgram(files, {
+    // Read the project's tsconfig.json if it exists
+    let compilerOptions: ts.CompilerOptions = {
       target: ts.ScriptTarget.ESNext,
       module: ts.ModuleKind.ESNext,
-    });
+    };
+    
+    try {
+      const configFile = this.options.tsConfigPath || ts.findConfigFile(
+        process.cwd(),
+        ts.sys.fileExists,
+        'tsconfig.json'
+      );
+      
+      if (configFile) {
+        const configFileContents = ts.readConfigFile(configFile, ts.sys.readFile);
+        if (!configFileContents.error) {
+          const parsedConfig = ts.parseJsonConfigFileContent(
+            configFileContents.config,
+            ts.sys,
+            path.dirname(configFile)
+          );
+          
+          if (!parsedConfig.errors || parsedConfig.errors.length === 0) {
+            compilerOptions = parsedConfig.options;
+          }
+        }
+      }
+    } catch (error) {
+      console.warn(`Could not load tsconfig.json, using default compiler options: ${error}`);
+    }
+    
+    this.program = ts.createProgram(files, compilerOptions);
     this.typeChecker = this.program.getTypeChecker();
   }
 
@@ -137,10 +166,40 @@ export class TysonCompiler {
    * Validate the parsed data against a TypeScript interface
    */
   private validateAgainstInterface(data: any, interfaceName: string): void {
-    // This is a placeholder for more sophisticated validation
-    // In a complete implementation, we would use the TypeScript compiler API
-    // to validate the data against the interface
+    if (!this.typeChecker || !this.program) {
+      console.warn('Type checker not initialized, skipping validation');
+      return;
+    }
+
+    // Find the interface declaration
+    let interfaceSymbol: ts.Symbol | undefined;
+    
+    for (const sourceFile of this.program.getSourceFiles()) {
+      if (sourceFile.isDeclarationFile) continue;
+      
+      // Find the symbol for the interface in the source file
+      this.typeChecker.getSymbolsInScope(
+        sourceFile, 
+        ts.SymbolFlags.Interface
+      ).forEach(symbol => {
+        if (symbol.name === interfaceName) {
+          interfaceSymbol = symbol;
+        }
+      });
+      
+      if (interfaceSymbol) break;
+    }
+
+    if (!interfaceSymbol) {
+      console.warn(`Interface ${interfaceName} not found in source files`);
+      return;
+    }
+
     console.log(`Validating against interface: ${interfaceName}`);
+    
+    // In a production implementation, we would convert the data to a TypeScript AST 
+    // and use the type checker to validate that the structure conforms to the interface.
+    // This would require deeper integration with TypeScript's compiler API.
   }
 
   /**
