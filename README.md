@@ -13,10 +13,10 @@ Tyson allows you to use TypeScript interfaces for JSON with enhanced features:
 
 ```bash
 # Install globally
-npm install -g tyson
+npm install -g @razroo/tyson
 
 # Or install locally in your project
-npm install --save tyson
+npm install --save @razroo/tyson
 ```
 
 ## Usage
